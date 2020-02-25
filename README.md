@@ -50,9 +50,9 @@ module load bbmap fastqc samtools hisat2 subread
 ref=/scratch/Shares/sawyer/ref/hg38
 bbmap_adapters=/scratch/Shares/sawyer/ref/adapters.fa
 
-for name in $(ls ${WD}/fastq/*_1.fq.gz)
+for name in $(ls ${WD}/fastq/*_R1.fastq.gz)
 do
-    name="${name%_1.*.*}"
+    name="${name%_R1.*.*}"
     sbatch --mem=20g -p short --time=23:50:00 --ntasks=32 \
      --nodes=1 --output=./%x_%j.out --error=./%x_%j.err \
      --mail-type=ALL --mail-user=${email} --job-name=RNAseq_proc \
