@@ -117,7 +117,9 @@ Once the process completes, there should be a `hg38_ercc_readcount.txt` file con
 
 <H2 id="step4">Step 4: Download the processed results</H2>
 Once the program finishes, all the files needed to evaluate the success of the processing and for downstream analysis are all going to be stored in `~/RNA_proc/output`. The files should be small in size (< 50 MB total) so it can be easily downloaded and transferred. To download the files, the fastest way would require you first **logout from Fiji**, then type in the following command in your local terminal (replace your username below):
+
 ```
 rsync -r <Your_Username>@fiji.colorado.edu:~/RNA_proc/output ~/Desktop
 ```
+
 Once the command is complete, the output folder should show up on your Desktop.
