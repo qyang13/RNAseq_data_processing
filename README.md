@@ -101,6 +101,7 @@ ls -lsh ${WD}/output
 
 <H2 id="step3">Step 3: Count reads for each gene</H2>
 By this step, all the sequencing reads have gone through quality filtering, trimming, QC, mapping and format conversion. To finally figure out how many reads are mapped onto each gene, we will need to run one more command. Since this command finishes within 2 minutes, we will simply run it through Fiji head node. No matter which directory you are in, simply copy and paste the following code into the terminal and run:
+
 ```
 ref=/scratch/Shares/sawyer/ref/hg38
 WD=~/RNA_proc
@@ -114,7 +115,7 @@ ${WD}/bam/*.sorted.bam
 ```
 Once the process completes, there should be a `hg38_ercc_readcount.txt` file containing all the read counts as well as a `hg38_ercc_readcount.txt.summary` file summarizing the total number of reads mapped/discarded.
 
-<H2 id="step4">Step 4: Download the processed results</H4>
+<H2 id="step4">Step 4: Download the processed results</H2>
 Once the program finishes, all the files needed to evaluate the success of the processing and for downstream analysis are all going to be stored in `~/RNA_proc/output`. The files should be small in size (< 50 MB total) so it can be easily downloaded and transferred. To download the files, the fastest way would require you first **logout from Fiji**, then type in the following command in your local terminal (replace your username below):
 ```
 rsync -r <Your_Username>@fiji.colorado.edu:~/RNA_proc/output ~/Desktop
