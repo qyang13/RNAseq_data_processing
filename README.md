@@ -3,13 +3,13 @@ This tutorial introduces steps to download and process **human RNA-seq data** ge
 
 **NOTE: Unless noted otherwise, all of the following steps are to be executed on Fiji.**
 
-### Table of Contents:
-* [Step 1: Retrieve sequencing data from CU-Anschutz](#step1)
+## Table of Contents:
+* [Step 1: Retrieve sequencing data and setup](#step1)
 * [Step 2: Trim reads, QC, Align & Read Count](#step2)
 * [Step 3: Download the read counting results](#step3)
-* [### Step 4: Download the processed results](#step4)
+* [Step 4: Download the processed results](#step4)
 
-### Step 1: Retrieve sequencing data from CU-Anschutz
+<H2 id="step1">Step 1: Retrieve sequencing data and setup</H2>
 Typically, once Halley finishes her sample preparation, she will be responsible to send the samples to CU-Anschutz for sequencing. The sequencing generally takes up to 3 weeks, with library preparation taking additional 1-2 weeks. The new sequencing data will be stored under Halley's account on CU-Anschutz FTP server, so she is responsible for transferring the new data to Fiji.
 
 **NOTE: If the sequencing is not paid via DTRA grant, make sure to add a different speedtype and PI name in the sample submission form. Also, to avoid delay, add someone from Sawyer Lab in the sample submission form so we are notified as soon as the sequencing is complete.**
@@ -42,7 +42,7 @@ sbatch --mem=10g -p short --time=23:50:00 --ntasks=8 --nodes=1 --output=./%x_%j.
 
 Once the job is complete, change into your working directory to make sure the files are transferred correctly.
 
-### Step 2: Trim reads, QC, Align & Read Count
+<H2 id="step2">Step 2: Trim reads, QC, Align & Read Count</H2>
 Once the sequencing data is copied successfully, we will first need to tell Fiji where everything is, this includes the sequencing data, the reference genome, and where all softwares are. Once everything is setup, simply copy the following code snippet into Fiji terminal, and wait until the job completes :)
 
 ```
@@ -99,7 +99,7 @@ The whole process should take around 1-2 hours to complete, once the job is comp
 ls -lsh ${WD}/output
 ```
 
-### Step 3: Count reads for each gene
+<H2 id="step3">Step 3: Count reads for each gene</H2>
 By this step, all the sequencing reads have gone through quality filtering, trimming, QC, mapping and format conversion. To finally figure out how many reads are mapped onto each gene, we will need to run one more command. Since this command finishes within 2 minutes, we will simply run it through Fiji head node. No matter which directory you are in, simply copy and paste the following code into the terminal and run:
 ```
 ref=/scratch/Shares/sawyer/ref/hg38
@@ -114,7 +114,7 @@ ${WD}/bam/*.sorted.bam
 ```
 Once the process completes, there should be a `hg38_ercc_readcount.txt` file containing all the read counts as well as a `hg38_ercc_readcount.txt.summary` file summarizing the total number of reads mapped/discarded.
 
-### Step 4: Download the processed results
+<H2 id="step4">Step 4: Download the processed results</H4>
 Once the program finishes, all the files needed to evaluate the success of the processing and for downstream analysis are all going to be stored in `~/RNA_proc/output`. The files should be small in size (< 50 MB total) so it can be easily downloaded and transferred. To download the files, the fastest way would require you first **logout from Fiji**, then type in the following command in your local terminal (replace your username below):
 ```
 rsync -r <Your_Username>@fiji.colorado.edu:~/RNA_proc/output ~/Desktop
