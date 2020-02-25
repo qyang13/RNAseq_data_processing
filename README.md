@@ -3,6 +3,13 @@ This tutorial introduces steps to download and process **human RNA-seq data** ge
 
 **NOTE: Unless noted otherwise, all of the following steps are to be executed on Fiji.**
 
+## Quick Start
+If you are in a rush, skip most of the instructions. Instead:
+1. Copy the code in `quick_start.sh` to a text editor
+2. Specify the two parameters required in `quick_start.sh`
+3. Copy the entire content of `quick_start.sh` to Fiji terminal and run
+4. Once all the jobs are completed, jump to [Step 4](#step4) below to download the data :)
+
 ## Table of Contents:
 * [Step 1: Retrieve sequencing data and setup](#step1)
 * [Step 2: Trim reads, QC, Align & Read Count](#step2)
